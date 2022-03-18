@@ -1,32 +1,6 @@
-// const form=document.getElementById('my-form');
-// console.log(document.querySelector('.container'));
 
-//Selct multiple items
 
-// const nodeitem=console.log(document.querySelectorAll('.item'));
-// const colitems=document.getElementByIdClassName('item');
-// console.log(document.getElementByIdClassName('item'));
-//console.log(document.getElementByIdTagName('li'));
-
-// for(let i=0;i<colitems.length;i++){
-//     console.log(colitems[i]);
-// }
-
-// const ul=document.querySelector('.items');
-// ul.firstElementChild.textContent="HTML";
-// ul.children[1].innertext="Css";
-// ul.lastElementChild.innerHTML="<h3>Javascript</h3>";
-// const btn=document.querySelector('.btn');
-// btn.style.backgroundColor='red';
-// btn.style.textTransform='uppsercase';
-
-// btn.addEventListener('click',e =>{
-//     e.preventDefault();
-//     console.log(e);
-//     ul.lastElementChild.innerHTML="<h3>Javascript</h3>";
-// })
-
-//Form Manipulation
+//Code To get Input elements of Interview
 
 var iwemail=document.querySelector("#iwemail");
 var iremail=document.querySelector("#iremail");
@@ -43,6 +17,8 @@ var limitmsg = document.createElement("text");
 
 myForm.addEventListener('submit', onSubmit);
 
+//access local storage
+
  var ide=localStorage.getItem('id');
  if(ide==null){
     ide=0;
@@ -55,7 +31,8 @@ function onSubmit(e)
 {
     if(iwemail.value!='' && iremail.value!='' && startime.value!='' && endtime.value!=''){
 
-
+        //converting time in string to number for comparison
+     
         mockendtime=endtime.value;
         mockstarttime=startime.value;
 
@@ -68,7 +45,8 @@ function onSubmit(e)
         
         {
 
-    
+           //creating an object
+         
             var obj1={
                id:ide,
                Intervieweemail:iwemail.value,
@@ -76,6 +54,9 @@ function onSubmit(e)
                StartTime:startime.value,
                EndTime:endtime.value,
            };
+         
+    //Getting localstorage in form of arrray
+         
     var allitems=localStorage.getItem('myobject');
     if(allitems==null){
           allitems=[];
@@ -96,7 +77,8 @@ function onSubmit(e)
     var flag=1;
     var len1=allitems.length;
 
-
+   //Checking whether Interviwee is free in input time
+         
     for(var i=0;i<len1;i++)
     {
         if(allitems[i].Intervieweemail==obj1.Intervieweemail)
@@ -131,6 +113,8 @@ function onSubmit(e)
         }
     } 
    
+     //Checking whether Interviwer is free in input time
+         
     for(var j=0;j<len1;j++)
     {
         if(allitems[j].Interviewermail==obj1.Interviewermail)
@@ -164,6 +148,8 @@ function onSubmit(e)
             
         }
     }
+         
+    //Adding interview to localstorage based on the change of flag value(based on free time from interviewee and interviewer)
 
     if(flag==1){
     allitems.push(obj1);
@@ -188,42 +174,3 @@ else{
 
 }
 
-// function checkintervieweeavail({ id,Intervieweemail,Intervieweremail,StartTime,EndTime }){
-//     var allitems1=localStorage.getItem('myobject');
-//         allitems1=JSON.parse(allitems1);
-
-//         for(var i=0;i<len1;i++)
-//         {
-//             if(allitems1[i].Intervieweemail==Intervieweemail)
-//             {
-                
-//                 var st2=allitems1[i].StartTime;
-//                st2=st2.replace(":",'');
-         
-//                var ed2=allitems1[i].EndTime;
-//                ed2=ed2.replace(":",'');
-         
-//                st2=Math.floor(st2);
-//                ed2=Math.floor(ed2);
-         
-//                 var givensttime=StartTime;
-//                 var givenentime=EndTime;;
-         
-//                 givensttime=givensttime.replace(":",'');
-//                  givensttime=Math.floor(givensttime);
-         
-//                 givenentime=givenentime.replace(":",'');
-//                 givenentime=Math.floor(givenentime);
-         
-//                 if((givensttime>=st2 && givensttime<=ed2) || (givenentime>=st2 && givenentime<=ed2) || (givensttime<st2 && givenentime>ed2)){
-               
-//                     return false; 
-//                 }
-//                 else{
-//                    return true;
-//                 }
-                
-//             }
-//         } 
-
-// }
