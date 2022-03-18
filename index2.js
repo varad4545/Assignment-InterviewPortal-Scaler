@@ -1,11 +1,18 @@
 var allitems=localStorage.getItem('myobject');
+
+//Getting Edit Container
+
 var container=document.getElementById('container');
 
+//Getting Edit Page Elements
 var eminterviewee=document.getElementById('iwemail1');
 var eminterviewer=document.getElementById('iremail1');
 var st=document.getElementById('st-time1');
 var et=document.getElementById('end-time1');
 var subedbtn=document.getElementById('subeditbtn')
+
+//Setting Edit container to none-> Only activates on click of edit buttton from table
+
 container.style.display='none';
 if(allitems==null){
     allitems=[];
@@ -13,12 +20,19 @@ if(allitems==null){
 else{
     allitems=JSON.parse(allitems);
 }
+//Access table Element
+
 var table=document.querySelector(".table");
+
+//Loop to run on every value of localstorage to add to the table
 
   allitems.forEach(function(value){
       addElementotable(value);
   })
   function addElementotable(value){
+      
+      //Creating Table elements to represent in html file
+      
     var row=document.createElement('tr');
 
     var email1=document.createElement('td');
@@ -50,11 +64,18 @@ var table=document.querySelector(".table");
     delcol.appendChild(delbutton);
     row.appendChild(delcol);
     table.appendChild(row);
+      
+      //Function for edit
+      
     editbutton.addEventListener('click',function(){
+        
+        //Edit container visible after clicking edit button
+        
         container.style.display='block';
         var insidecontainer=container.children;
      
-            
+            //Initial values of edit form set to the values of row from which it was clicked
+        
              eminterviewee.value=value.Intervieweemail;
           
              eminterviewer.value=value.Intervieweremail;
@@ -63,17 +84,23 @@ var table=document.querySelector(".table");
      
              et.value=value.EndTime;
               
-  
+             //Submit button of edit page
              subedbtn.onclick=function(){
              
                 if(st.value>=et.value){
                     alert("Start time should be less than End time");
                 }
                 else{
+                    //Looping over all values of localstorage
+                    
                 for(var i=0;i<allitems.length;i++){
 
-
+                     //Finding the element from localstorage that we have edit through id
+                    
                     if(allitems[i].id==id1){
+                        
+                        //creating object fro new edited values
+                        
                         var body={
                             id:id1,
                             Intervieweemail:eminterviewee.value,
@@ -83,6 +110,9 @@ var table=document.querySelector(".table");
                         };
 
                         var flag1=0;
+                        
+                        //Checking free time of interviwee on edited values
+                        
                         for(var k=0;k<allitems.length;k++)
                         {
 
@@ -120,7 +150,8 @@ var table=document.querySelector(".table");
                                    }
                         } 
 
-                      
+                         //Checking free time of interviwer on edited values
+                        
                         for(var m=0;m<allitems.length;m++)
                         {
 
@@ -157,6 +188,9 @@ var table=document.querySelector(".table");
             
                                    }
                         } 
+                        
+                        //Updating the values based on whether above conditions allow
+                        
                         if(flag1==0)
                         {
                         alert("Interview Edited");
@@ -178,9 +212,12 @@ var table=document.querySelector(".table");
 
 
     });
+     //Delete Function
+      
     delbutton.addEventListener("click",function(){
         
-             
+             //Looping over all localstorage values to find the clicked elements and hence delete
+        
              for(var i=0;i<allitems.length;i++){
                  if(allitems[i].id==id1){
            
