@@ -1,4 +1,4 @@
-# Interview Porta
+# Interview Portal
 
 LINK to access - assignment-interview-portal-scaler.vercel.app
 
