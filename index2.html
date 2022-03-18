@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Basics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>List of Scheduled Interview</h1>
+    </header>
+    <div id="container">
+        <form id="my-form">
+            <h1>Edit Interview</h1>
+             <div class="msg"></div>
+            <div>
+                <label for="iwemail">Email of Interviewee:</label>
+                <input type="text" id="iwemail1">
+            </div>
+            <div>
+                <label for="iremail">Email of Interviewer:</label>
+                <input type="text" id="iremail1">
+            </div>
+            <div>
+                <label for="Starttime">Choose Start time:</label>
+                <input type="time" id="st-time1">
+            </div>
+            <div>
+                <label for="Endtime">Choose end time:</label>
+                <input type="time" id="end-time1">
+            </div>
+            <input class="btn" type="submit" value="Edit Interview" id="subeditbtn">
+            <br>
+           
+        </form>
+     
+
+      
+    
+        <ul id="users"></ul>
+    
+        <!-- <ul class="items">
+            <li class="item">Item 1</li>
+            <li class="item">Item 2</li>
+            <li class="item">Item 3</li>
+        </ul> -->
+    </div>
+    
+    <table class="table">
+        <tr>
+          <th>Interviewee Email</th>
+     
+          <th>Interviewer Email</th>
+          <th>Start-Time</th>
+          <th>End Time</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+  
+      </table>
+    <script src="index2.js"></script>
+</body>
+</html>
